@@ -906,6 +906,9 @@
       "settings": {
         "show_vendor": {
           "label": "Show vendor"
+        },
+        "quantity_limit": {
+          "label": "Maximum quantity"
         }
       }
     },
