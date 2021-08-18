@@ -1189,7 +1189,6 @@ deferred-media {
 .share-button {
   display: block;
   position: relative;
-  max-width: 31rem;
 }
 
 .share-button details {
@@ -1238,6 +1237,7 @@ details[open] > .share-button__fallback {
   left: 0.1rem;
   z-index: 3;
   width: 100%;
+  min-width: 31rem;
   box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 0.55);
 }
 
