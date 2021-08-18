@@ -98,7 +98,8 @@
                     media_size: section.settings.image_ratio,
                     show_secondary_image: section.settings.show_secondary_image,
                     add_image_padding: section.settings.add_image_padding,
-                    show_vendor: section.settings.show_vendor
+                    show_vendor: section.settings.show_vendor,
+                    show_rating: section.settings.show_rating
                   %}
                 {%- when 'article' -%}
                   <a href="{{ item.url }}" class="card-wrapper">
@@ -208,6 +209,12 @@
       "id": "show_vendor",
       "default": false,
       "label": "t:sections.main-search.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "t:sections.main-search.settings.show_rating.label"
     },
     {
       "type": "header",
