@@ -22,13 +22,13 @@
             "text_style": "subtitle"
           }
         },
-        "ef38cb6f-9454-4a19-91ca-619e3fe70090": {
-          "type": "rating",
+        "price": {
+          "type": "price",
           "settings": {
           }
         },
-        "price": {
-          "type": "price",
+        "ef38cb6f-9454-4a19-91ca-619e3fe70090": {
+          "type": "rating",
           "settings": {
           }
         },
@@ -64,8 +64,8 @@
         "vendor",
         "title",
         "subtitle",
-        "ef38cb6f-9454-4a19-91ca-619e3fe70090",
         "price",
+        "ef38cb6f-9454-4a19-91ca-619e3fe70090",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
