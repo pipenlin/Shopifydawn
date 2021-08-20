@@ -1,4 +1,3 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 {% assign found_title = false %}
 {% for item in checkout.line_items %}
   {% if item.variant.id == 6917049319609 %}
