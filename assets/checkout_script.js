@@ -6,11 +6,10 @@
   {% endif %}
 {% endfor %}
 
-{% if checkout.subtotal_price >= 10 %}
+{% if checkout.subtotal_price >= 100 and found_title == false %}
 <script>
   $( document ).ready(function() {
       var variantId = 6917049319609;
-      console.log('variantId');
       jQuery.post('/cart/add.js', {
         quantity: 1,
         id: variantId
