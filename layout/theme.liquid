@@ -149,7 +149,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 {% assign found_title = false %}
 {% for item in checkout.line_items %}
-  {% if item.variant.id == 7387208286253 %}
+  {% if item.variant.id == 6917049319609 %}
     {% assign found_title = true %}
   {% endif %}
 {% endfor %}
@@ -157,7 +157,7 @@
 {% if checkout.subtotal_price > 10000 and found_title == false %}
 <script>
   $( document ).ready(function() {
-      var variantId = 7387208286253;
+      var variantId = 6917049319609;
       jQuery.post('/cart/add.js', {
         quantity: 1,
         id: variantId
