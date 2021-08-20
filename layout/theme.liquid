@@ -147,9 +147,10 @@
         shareSuccess: `{{ 'general.share.success_message' | t }}`,
       }
     </script>
-   <script>
+   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  $( document ).ready(function() {
+  <script>
+    $( document ).ready(function() {
       var variantId = 6917049319609;
       jQuery.post('/cart/add.js', {
         quantity: 1,
