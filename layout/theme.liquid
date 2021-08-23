@@ -155,7 +155,7 @@
     {% assign found_title = true %}
   {% endif %}
 {% endfor %}
-{{ checkout.subtotal_price}}
+checkout.subtotal_price : {{ checkout.subtotal_price}}
 {% if checkout.subtotal_price > 10 and found_title == false %}
 <script>
   $( document ).ready(function() {
