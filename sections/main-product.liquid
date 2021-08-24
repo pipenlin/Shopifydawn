@@ -463,7 +463,7 @@
 
   <script src="{{ 'product-model.js' | asset_url }}" defer></script>
 {%- endif -%}
-
+{% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
 {% schema %}
 {
   "name": "t:sections.main-product.name",
