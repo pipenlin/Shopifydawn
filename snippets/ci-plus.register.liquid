@@ -1,0 +1,157 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<div class = 'customer-register'>
+{% form 'create_customer', id: 'RegisterForm', class: 'form-wrapper' %}
+<div id = 'ci-plus-registration-fields'>
+    <div class = 'ci-field'>
+        <label>{{ 'customer.register.first_name' | t }}</label>
+        <div class = 'full-width'>
+            <input type="text" name = 'first_name' autofocus />
+        </div>  
+    </div>  
+            
+    <div class = 'ci-field'>
+        <label class = 'ci_label'>{{ 'customer.register.last_name' | t }}</label>
+        <div class = 'full-width'>
+            <input type="text" name = 'last_name' />
+        </div>
+    </div>
+            
+    <div class = 'ci-field'>
+        <label class = 'ci_label'>{{ 'customer.register.email' | t }}<span style = 'color: red'>*</span></label>
+        <div class = 'full-width'>
+            <input type="email" name = 'email' id = 'email_field'/>
+        </div>
+    </div>
+            
+    <div class = 'ci-field'>
+        <label>{{ 'customer.register.password' | t }}<span style = 'color: red'>*</span></label>
+        <div class = 'full-width'>
+            <input type="password" name = 'password' id = 'password_field' />
+        </div>
+    </div>
+                             
+    <p id ='server_response'></p>
+    <button type="submit" class="btn button submit_btn">{{ 'customer.register.submit' | t }}</button>
+</div>
+{% endform %}
+</div>      
+    
+{% form 'customer_login' %}
+    <input type="hidden" name="checkout_url" id="redirect_url" value="" />
+    <div style='display:none'>
+        <input type="email" name="customer[email]" id="CustomerEmail"
+        class="{% if form.errors contains 'email' %} input--error{% endif %}" autocorrect="off" autocapitalize="off" autofocus>
+        <input type="password" value="" name="customer[password]" id="CustomerPassword" class="{% if form.errors contains 'password' %} input--error{% endif %}">
+        <input type="submit" id='CustomerSubmit' value="Login">
+    </div>
+{% endform %}
+
+<style>
+    .inline {
+        display:inline !important;
+    }
+    .full-width {
+        width: 100%;
+        position: relative;
+    }
+    .form-wrapper {
+        width: 100%;
+        margin-top: 0 !important;
+    }
+    .select-wrapper {
+        max-width: none; 
+    }
+    .submit_btn {
+        margin-top: 15px; 
+    }
+    .ci_input_checkbox {
+        text-align: left;
+    }
+    .customer-register {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .ci-plus-registration-fields {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin: 0 -.5em;
+        width: calc(100% + 1em);
+    }
+
+    .ci-field {
+        width: 100%;
+        text-align: left;
+        margin: 12px 0;
+    }
+    
+    .ci-field label {
+        width: 100%;
+        max-width: none;
+    }
+
+    .ci-field input {
+        width: 100%;
+        max-width: none;
+        text-align: left;
+        padding: 6px;
+        appearance: auto;
+        -moz-appearance: auto;
+        -webkit-appearance: auto;
+        border: 1px solid #dbdbdb;
+    }
+
+    .ci-field select {
+        width: 100%;
+        height: auto;
+        max-width: none;
+        text-align: left;
+        padding: 6px;
+        appearance: auto;
+        -moz-appearance: auto;
+        -webkit-appearance: auto;
+    }
+
+    .ci-field input[type="checkbox"] {
+        -webkit-appearance: checkbox !important;
+        -moz-appearance: checkbox !important;
+        -ms-appearance: checkbox !important;
+        -o-appearance: checkbox !important;
+        appearance: checkbox !important;
+        width: auto;
+    }
+</style>
+    
+<script>
+$('#RegisterForm').attr('action', '');
+$('#RegisterForm').attr('post', '');
+    
+$('#RegisterForm').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+        url:'/apps/simple_cinfo/storefront_submit_customer_form',
+        type:'post',
+        data:$('#RegisterForm').serialize(),
+            success(data) {
+                if (data.data == true) {
+                document.getElementById('server_response').innerHTML = "Submitted Succesfully";
+                $("#CustomerEmail").val($("#email_field").val())
+                    $("#CustomerPassword").val($("#password_field").val())
+                $("#CustomerSubmit").click()
+                } else {
+                    document.getElementById('server_response').innerHTML = data.data;
+                }
+            //whatever you wanna do after the form is successfully submitted
+            }, error(e) {
+                if (e.responseJSON == undefined) {
+                    document.getElementById('server_response').innerHTML = e.responseText;
+                } else {	
+                    document.getElementById('server_response').innerHTML = e.responseJSON.data;
+                }
+            }
+    });
+});
+</script>
+                

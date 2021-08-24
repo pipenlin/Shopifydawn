@@ -1,0 +1,168 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<h2 style = 'margin-top: 15px'>Edit Info</h2>
+<div class = 'customer-account'>
+    {% form 'customer', id: 'AccountForm', class: 'form-wrapper' %}
+    <div id = 'ci-plus-account-fields'>
+        <input style = 'display: none' name = 'c_id' value = '{{ customer.id }}'/>
+                    
+        <p id ='server_response_c'></p>
+        <button type="submit" class="btn button submit_btn">Submit</button>
+    </div> 
+    {% endform %}
+</div>
+<style>
+.inline {
+    display:inline !important;
+}
+.full-width {
+    width: 100%;
+    position: relative;
+}
+.form-wrapper {
+    width: 100%;
+    margin-top: 0 !important;
+}
+.select-wrapper {
+    max-width: none; 
+}
+.submit_btn {
+    margin-top: 15px; 
+}
+.ci_input_checkbox {
+    text-align: left;
+}
+.customer-account {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.ci-plus-account-fields {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 0 -.5em;
+    width: calc(100% + 1em);
+}
+
+.ci-field {
+    width: 100%;
+    text-align: left;
+    margin: 12px 0;
+}
+
+.ci-field label {
+    width: 100%;
+    max-width: none;
+}
+
+.ci-field input {
+    width: 100%;
+    max-width: none;
+    text-align: left;
+    padding: 6px;
+    appearance: auto;
+    -moz-appearance: auto;
+    -webkit-appearance: auto;
+    border: 1px solid #dbdbdb;
+}
+
+.ci-field select {
+    width: 100%;
+    height: auto;
+    max-width: none;
+    text-align: left;
+    padding: 6px;
+    appearance: auto;
+    -moz-appearance: auto;
+    -webkit-appearance: auto;
+}
+
+.ci-field input[type="checkbox"] {
+    -webkit-appearance: checkbox !important;
+    -moz-appearance: checkbox !important;
+    -ms-appearance: checkbox !important;
+    -o-appearance: checkbox !important;
+    appearance: checkbox !important;
+    width: auto;
+}
+</style>
+            
+<script>
+$('#AccountForm').attr('action', '');
+$('#AccountForm').attr('post', '');
+
+$('#AccountForm').submit(function (e) {
+    e.preventDefault();
+    $.ajax({
+        url: '/apps/simple_cinfo/storefront_submit_customer_form',
+        type: 'post',
+        data: $('#AccountForm').serialize(),
+        success(data) {
+            if (data.data == true) {
+                document.getElementById('server_response_c').innerHTML = "Submitted Succesfully";
+            } else {
+                document.getElementById('server_response_c').innerHTML = data.data;
+            }
+            //whatever you wanna do after the form is successfully submitted
+        },
+        error(e) {
+            if (e.responseJSON == undefined) {
+                document.getElementById('server_response_c').innerHTML = e.responseText;
+            } else {	
+                document.getElementById('server_response_c').innerHTML = e.responseJSON.data;
+            }
+        }
+    });
+});
+
+function get_metafields() {
+    var c_id = {{customer.id}};
+    var post_data = {
+        'c_id': c_id
+    }
+    $.ajax({
+        url: '/apps/simple_cinfo/get_customer_metafields',
+        type: 'post',
+        data: post_data,
+        success(data) {
+            data = data.data
+            for (var i = 0; i < data.length; i++) {
+                switch (data[i].type) {
+                    case ('select'):
+                        $('#ci_' + data[i].identifier + '_c').val(data[i].value).change();
+                        break;
+                    case ('checkbox'):
+                        var checked = data[i].value.split(",").map(item => item.trim())
+                        $("input[name='ci_" + data[i].identifier + "']").each(function () {
+                            if (checked.includes($(this).val())) {
+                                $(this).prop('checked', true);
+                            } else {
+                                $(this).prop('checked', false);
+                            }
+                        });
+                        break;
+                    case ('newsletter'):
+                        if (data[i].value != '') {
+                            $('#ci_' + data[i].identifier + '_c').prop('checked', true);
+                        } else {
+                            $('#ci_' + data[i].identifier + '_c').prop('checked', false);
+                        }	
+                        break;
+                    case ('date'):
+                        $('#ci_' + data[i].identifier + '_c').attr('value', data[i].value)
+                        break;
+                    default:
+                        $('#ci_' + data[i].identifier + '_c').attr('placeholder', data[i].value)
+                        break;
+                }
+            }
+        },
+        error(e) {
+            console.log(e)
+        }
+    });
+}
+get_metafields()
+</script>
+                    
