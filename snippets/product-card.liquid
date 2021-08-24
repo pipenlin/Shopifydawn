@@ -91,7 +91,7 @@
         {%- if product_card_product.featured_media -%}
           <span class="card-information__text h5">
             {{ product_card_product.title | escape }}
-          </span>
+          </span>{% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
         {%- endif -%}
 
         {% comment %} TODO: metafield {% endcomment %}
