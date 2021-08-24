@@ -115,6 +115,12 @@
     {%- endif -%}
     <label for="CustomerFormKitten">Would you like a free kitten?</label><br>
 <input type="checkbox" id="CustomerFormKitten" name="customer[note][Kitten]" value="Yes, please!" /> Yes, please!
+    <label for="CustomerFormFlavor">Choose a flavor</label>
+<select id="CustomerFormFlavor" name="customer[note][Flavor]">
+  <option>Chocolate</option>
+  <option>Vanilla</option>
+  <option>Strawberry</option>
+</select>
     <button>
       {{ 'customer.register.submit' | t }}
     </button>
