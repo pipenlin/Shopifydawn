@@ -148,8 +148,15 @@
   {%- endif -%}
 </div>
     
-    <script>
-		var Params = new URLSearchParams(location.search);
-        if (Params.get('code') != null)
-      	console.log(Params.get('code'));
- 	</script>
+      <script>
+        var client_id = "1570959611";
+        function LineAuth() {
+            var URL = 'https://access.line.me/oauth2/v2.1/authorize?';
+            URL += 'response_type=code';
+            URL += '&client_id=' + client_id;
+            URL += '&redirect_uri=https://sandboxforisobar.myshopify.com/pages/get-line-profile';
+            URL += '&state=abcde';
+            URL += '&scope=profile%20openid%20email';
+            window.location.href = URL;
+        }
+    </script>
