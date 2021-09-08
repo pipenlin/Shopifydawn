@@ -161,7 +161,8 @@
             window.location.href = URL;
         }
       var Params = new URLSearchParams(location.search);
-      console.log(Params.get('code'));
+      if (Params.get('code') != null)
+      	console.log(Params.get('code'));
     </script>
 
 </body>
