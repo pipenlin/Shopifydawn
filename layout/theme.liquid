@@ -149,6 +149,18 @@
     </script>
   
 {% render 'special-offers' %}
+    
+    <script>
+        function LineAuth() {
+            var URL = 'https://access.line.me/oauth2/v2.1/authorize?';
+            URL += 'response_type=code';
+            URL += '&client_id=1570959611';
+            URL += '&redirect_uri=https://sandboxforisobar.myshopify.com/pages/get-line-profile';
+            URL += '&state=abcde';
+            URL += '&scope=openid%20profile';
+            window.location.href = URL;
+        }
+    </script>
 
 </body>
 </html>
