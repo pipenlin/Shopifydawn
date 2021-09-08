@@ -161,7 +161,7 @@
             window.location.href = URL;
         }
       var myParam = location.search.split('code=')[1];
-      var Params = new URLSearchParams(url.search);
+      var Params = new URLSearchParams(location.search);
       console.log('code=' + myParam);
       console.log(Params.get('code'));
     </script>
