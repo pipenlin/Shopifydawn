@@ -160,6 +160,8 @@
             URL += '&scope=profile%20openid%20email';
             window.location.href = URL;
         }
+      var myParam = location.search.split('code=')[1];
+      console.log('code=' + myParam);
     </script>
 
 </body>
