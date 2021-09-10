@@ -11,7 +11,7 @@ Processing................
             url: "https://9698-59-124-87-73.ngrok.io/API/GetLineProfile.ashx",
             type: "POST",
             crossDomain: true,
-            data: jQuery.param({ Code: Params.get('code')}),
+        data: {Code : code},
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             success: function (response) {
               
