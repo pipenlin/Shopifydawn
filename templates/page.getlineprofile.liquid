@@ -10,15 +10,13 @@ Processing................
       $.ajax({
             url: "https://9698-59-124-87-73.ngrok.io/API/GetLineProfile.ashx",
             type: "POST",
-            crossDomain: true,
             data: {Code : code},
-            
             success: function (response) {
               
                console.log(response);
             },
             error: function (xhr, status) {
-              console.log("error:" + xhr + status);
+              console.log("error:" + xhr.value + status);
             }
         }); 
       	
