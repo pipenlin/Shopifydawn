@@ -2,10 +2,11 @@ Processing................
 	<script>
 		var Params = new URLSearchParams(location.search);
         var userId;
-        if (Params.get('code') != null)
-      	console.log(Params.get('code'));
+        var code =Params.get('code');
+        if ( code != null)
+      		console.log(code);
       
-      $.post('https://9698-59-124-87-73.ngrok.io/API/GetLineProfile.ashx', { Code: Params.get('code')}, 
+      $.post('https://9698-59-124-87-73.ngrok.io/API/GetLineProfile.ashx', { Code: code}, 
     		function(returnedData){
             userId = returnedData;
          	console.log("userId" + userId);
