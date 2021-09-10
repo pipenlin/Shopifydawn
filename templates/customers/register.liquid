@@ -113,7 +113,7 @@
         {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.
       </span>
     {%- endif -%}
-    <label for="CustomerFormKitten">Would you like a free kitten?</label><br>
+<!--<label for="CustomerFormKitten">Would you like a free kitten?</label><br>
 <input type="checkbox" id="CustomerFormKitten" name="customer[note][Kitten]" value="Yes, please!" /> Yes, please!
     <label for="CustomerFormFlavor">Choose a flavor</label>
 <select id="CustomerFormFlavor" name="customer[note][Flavor]">
@@ -124,6 +124,7 @@
     <label>Do you prefer tea or coffee?</label><br>
 <input type="radio" id="CustomerFormTea" name="customer[note][Tea or Coffee]" value="Tea" /> Tea<br>
 <input type="radio" id="CustomerFormCoffee" name="customer[note][Tea or Coffee]" value="Coffee" /> Coffee
+-->
     <button>
       {{ 'customer.register.submit' | t }}
     </button>
