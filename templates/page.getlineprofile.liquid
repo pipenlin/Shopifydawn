@@ -4,21 +4,16 @@ Processing................
         var userId;
         if (Params.get('code') != null)
       	console.log(Params.get('code'));
-        $.ajax({
-            url: "https://9698-59-124-87-73.ngrok.io/API/GetLineProfile.ashx",
-            type: "POST",
-            crossDomain: true,
-            data: jQuery.param({ Code: Params.get('code')}),
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            success: function (response) {
-              
-               console.log(response);
-            },
-            error: function (xhr, status) {
-                console.log("error");
-            }
-        }); 
       
+      $.post('https://9698-59-124-87-73.ngrok.io/API/GetLineProfile.ashx', { Code: Params.get('code')}, 
+    		function(returnedData){
+            userId = returnedData;
+         	console.log(returnedData);
+		});
+      	$.post('https://9698-59-124-87-73.ngrok.io/API/SetShopifyCustomer.ashx', { userId: userId, Email:"pipenlin@gmail.com"}, 
+    		function(returnedData){
+         	console.log(returnedData);
+});
       	
 		
  	</script>
