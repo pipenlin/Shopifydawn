@@ -7,17 +7,20 @@ Processing................
       		console.log(code);
       
       
-    
-
-      $.post('https://9698-59-124-87-73.ngrok.io/API/GetLineProfile.ashx', { Code: Params.get('code')}, 
-    		function(returnedData){
-            userId = returnedData.userId;
-            console.log(userId);
-		});
-      	$.post('https://9698-59-124-87-73.ngrok.io/API/SetShopifyCustomer.ashx', { userId: userId, Email:"pipenlin@gmail.com"}, 
-    		function(returnedData){
-         	console.log(returnedData);
-      });
+      $.ajax({
+            url: "https://9698-59-124-87-73.ngrok.io/API/GetLineProfile.ashx",
+            type: "POST",
+            data: {Code : code},
+            success: function (response) {
+               userId= response.userId;
+               console.log(userId);
+            },
+            error: function (xhr, status) {
+              console.log("error:" + xhr.responseText  + status);
+            }
+        }); 
       	
+
+     
 		
  	</script>
