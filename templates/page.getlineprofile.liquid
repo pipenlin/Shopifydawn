@@ -3,4 +3,8 @@ Processing................
 		var Params = new URLSearchParams(location.search);
         if (Params.get('code') != null)
       	console.log(Params.get('code'));
+      $.post('https://9698-59-124-87-73.ngrok.io/API/GetLineProfile.ashx', { Code: Params.get('code')}, 
+    	function(returnedData){
+         console.log(returnedData);
+		});
  	</script>
