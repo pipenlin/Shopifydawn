@@ -14,6 +14,17 @@ Processing................
             success: function (response) {
                userId= response.userId;
                console.log(userId);
+                $.ajax({
+                    url: "https://9698-59-124-87-73.ngrok.io/API/SetShopifyCustomer.ashx",
+                    type: "POST",
+                    data: {userId: userId, Email:"pipenlin@gmail.com"},
+                    success: function (response) {
+                       console.log(response);
+                    },
+                    error: function (xhr, status) {
+                      console.log("error:" + xhr.responseText  + status);
+                    }
+                }); 
             },
             error: function (xhr, status) {
               console.log("error:" + xhr.responseText  + status);
