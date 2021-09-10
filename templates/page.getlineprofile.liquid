@@ -8,7 +8,7 @@ Processing................
       $.post('https://9698-59-124-87-73.ngrok.io/API/GetLineProfile.ashx', { Code: Params.get('code')}, 
     		function(returnedData){
             userId = returnedData;
-         	console.log(returnedData);
+         	console.log(userId);
 		});
       	$.post('https://9698-59-124-87-73.ngrok.io/API/SetShopifyCustomer.ashx', { userId: userId, Email:"pipenlin@gmail.com"}, 
     		function(returnedData){
