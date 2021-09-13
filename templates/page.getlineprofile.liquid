@@ -6,6 +6,41 @@ Processing................
         if ( code != null)
       		console.log(code);
       
-    
+      $.ajax({
+            url: "https://e8af-59-124-87-73.ngrok.io/API/GetLineProfile.ashx",
+            type: "POST",
+            data: {Code : code},
+            success: function (response) {
+               userId= response.userId;
+               console.log(userId);
+                $.ajax({
+                    url: "https://e8af-59-124-87-73.ngrok.io/API/SetShopifyCustomer.ashx",
+                    type: "POST",
+                    data: {userId: userId, Email:"pipenlin@gmail.com"},
+                    success: function (response) {
+                       console.log(response);
+                      	$.ajax({
+                    		url: response.ShopifyMultipass,
+                    		type: "GET",
+                            success: function (response) {
+                       			console.log(response);
+                                window.location.href = response.url;
+                       
+                    		},
+                    		error: function (xhr, status) {
+                      			console.log("error:" + xhr.responseText  + status);
+                    		}
+                		}); 
+                       
+                    },
+                    error: function (xhr, status) {
+                      console.log("error:" + xhr.responseText  + status);
+                    }
+                }); 
+            },
+            error: function (xhr, status) {
+              console.log("error:" + xhr.responseText  + status);
+            }
+        }); 
 		
  	</script>
