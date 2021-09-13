@@ -2,6 +2,7 @@ Processing................
 	<script>
 		var Params = new URLSearchParams(location.search);
         var userId;
+        var email;
         var code =Params.get('code');
         if ( code != null)
       		console.log(code);
@@ -11,12 +12,13 @@ Processing................
             type: "POST",
             data: {Code : code},
             success: function (response) {
-               userId= response.userId;
+               userId= response.sub;
+               email= response.email;
                console.log(userId);
                 $.ajax({
                     url: "https://e8af-59-124-87-73.ngrok.io/API/SetShopifyCustomer.ashx",
                     type: "POST",
-                    data: {userId: userId, Email:"pipenlin@gmail.com"},
+                    data: {userId: userId, Email:email},
                     success: function (response) {
                        console.log(response);
                       	$.ajax({
