@@ -8,7 +8,7 @@ Processing................
       		console.log(code);
       
       $.ajax({
-            url: "https://6c25-59-124-87-73.ngrok.io/API/GetLineProfile.ashx",
+            url: "https://0fe3-60-250-61-214.ngrok.io/API/GetLineProfile.ashx",
             type: "POST",
             data: {Code : code},
             success: function (response) {
@@ -16,7 +16,7 @@ Processing................
                email= response.email;
                console.log(userId);
                 $.ajax({
-                    url: "https://6c25-59-124-87-73.ngrok.io/API/SetShopifyCustomer.ashx",
+                    url: "https://0fe3-60-250-61-214.ngrok.io/API/SetShopifyCustomer.ashx",
                     type: "POST",
                     data: {userId: userId, Email:email},
                     success: function (response) {
