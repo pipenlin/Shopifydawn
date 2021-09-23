@@ -8,7 +8,7 @@ webgazer.setGazeListener(function(data, elapsedTime) {
   	if (yprediction < 50){
       	$(window).scrollTop($(window).scrollTop() - 5);
   	}
-  	if (yprediction > (window.innerHeight - 50){
+  	if (yprediction > (window.innerHeight - 50)){
 		$(window).scrollTop($(window).scrollTop() + 5);
     }
                          
