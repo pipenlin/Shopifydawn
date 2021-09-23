@@ -1,4 +1,4 @@
-
+/*
 webgazer.setGazeListener(function(data, elapsedTime) {
     if (data == null) {
         return;
@@ -19,3 +19,4 @@ webgazer.setGazeListener(function(data, elapsedTime) {
                          
     console.log(elapsedTime); //elapsed time is based on time since begin was called
 }).begin();
+*/
