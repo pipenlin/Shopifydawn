@@ -11,5 +11,10 @@ webgazer.setGazeListener(function(data, elapsedTime) {
   	if (yprediction > (window.innerHeight - 50){
 		$(window).scrollTop($(window).scrollTop() + 5);
     }
+                         
+    var currentElement = document.elementFromPoint(xprediction,yprediction);
+
+	currentElement.click();
+                         
     console.log(elapsedTime); //elapsed time is based on time since begin was called
 }).begin();
