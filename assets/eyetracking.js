@@ -12,9 +12,9 @@ webgazer.setGazeListener(function(data, elapsedTime) {
 		$(window).scrollTop($(window).scrollTop() + 5);
     }
                          
-    var currentElement = document.elementFromPoint(xprediction,yprediction);
+    //var currentElement = document.elementFromPoint(xprediction,yprediction);
 
-	currentElement.click();
+	//currentElement.click();
                          
     console.log(elapsedTime); //elapsed time is based on time since begin was called
 }).begin();
