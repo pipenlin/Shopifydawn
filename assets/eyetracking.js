@@ -16,7 +16,7 @@ webgazer.setGazeListener(function(data, elapsedTime) {
     //var currentElement = document.elementFromPoint(xprediction,yprediction);
 
 	//currentElement.click();
-    //$("#webgazerVideoContainer").css('display','none');    
+    $("#webgazerVideoContainer").css('display','none');    
     console.log(elapsedTime); //elapsed time is based on time since begin was called
 }).begin();
 
