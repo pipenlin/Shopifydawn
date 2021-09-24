@@ -18,7 +18,8 @@ webgazer.setGazeListener(function(data, elapsedTime) {
 	//currentElement.click();
     $("#webgazerVideoContainer").css('display','none');    
     //console.log(elapsedTime); //elapsed time is based on time since begin was called
-    console.log("X:" +xprediction +" Y:" +  yprediction)
+    console.log("X:" +xprediction +" Y:" +  yprediction);
+    if (x > 50 && X <55 && Y > 100 && Y< 120) alert('Got it!'); 
     //console.log(elapsedTime)
 }).begin();
 
