@@ -7,10 +7,10 @@ webgazer.setGazeListener(function(data, elapsedTime) {
     var yprediction = data.y; //these y coordinates are relative to the viewport
   
   	if (yprediction < 50){
-      	$(window).scrollTop($(window).scrollTop() - 5);
+      	$(window).scrollTop($(window).scrollTop() - 50);
   	}
   	if (yprediction > (window.innerHeight - 50)){
-		$(window).scrollTop($(window).scrollTop() + 5);
+		$(window).scrollTop($(window).scrollTop() + 50);
     }
                          
     //var currentElement = document.elementFromPoint(xprediction,yprediction);
