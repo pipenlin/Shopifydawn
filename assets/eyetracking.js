@@ -1,6 +1,6 @@
 
 webgazer.setGazeListener(function(data, elapsedTime) {
-    if (data == null) {
+   /* if (data == null) {
         return;
     }
     var xprediction = data.x; //these x coordinates are relative to the viewport
@@ -21,5 +21,6 @@ webgazer.setGazeListener(function(data, elapsedTime) {
     //console.log("X:" +xprediction +" Y:" +  yprediction);
     //if (x > 150 && X <200 && Y > 500 && Y< 600) console.log("X:" +xprediction +" Y:" +  yprediction); 
     //console.log(elapsedTime)
+    */
 }).begin();
 
